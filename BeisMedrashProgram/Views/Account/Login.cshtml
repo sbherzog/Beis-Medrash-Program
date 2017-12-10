@@ -1,0 +1,44 @@
+﻿@using BeisMedrashProgram.data;
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<form id="signin_form" method="post" action="/account/login">
+    <div class="panel-heading">
+        <h4 class="text-center"> Sign In to <strong class="text-custom">Beis Medrash Program</strong></h4>
+    </div>
+    <div class="p-20">
+        @if (!String.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                @Model.ErrorMessage
+            </div>
+        }
+
+        <label for="email">Email:</label>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                <input type="text" id="email" name="email" value="@Model.Email" placeholder="Email Address" class="form-control" autocomplete="off" />
+            </div>
+        </div>
+
+        <label for="password">Password:</label>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-lock"></span> </div>
+                <input type="password" id="password" name="password" placeholder="Password" class="form-control" />
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <button class="btn btn-primary btn-md submit-btn mt-10" id="submit_button">Submit</button>
+
+        <div class="link-sec">
+            <div class="left-link"><a href="/account/forgotpassword/">Forgot password</a></div>
+            <div><a class="right-link" href="/account/register/">Create a New Account</a></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</form>

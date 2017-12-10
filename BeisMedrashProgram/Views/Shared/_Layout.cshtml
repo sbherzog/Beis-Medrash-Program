@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Beis Medrash Program</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="row">
+        <!-- uncomment code for absolute positioning tweek see top comment in css -->
+        <!-- <div class="absolute-wrapper"> </div> -->
+        <!-- Menu -->
+
+        <div class="side-menu">
+
+            <nav class="navbar navbar-inverse" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="brand-wrapper">
+                        <!-- Hamburger -->
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <!-- Brand -->
+                        <div class="brand-name-wrapper">
+                            <a class="navbar-brand" href="#">Beis Medrash Program</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Menu -->
+                <div class="side-menu-container">
+                    <ul class="nav navbar-nav">
+
+                        <!-- Dropdown-->
+                        <li class="panel panel-default" id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl1"><span class="fa fa-user-circle-o"></span>&nbsp;&nbsp; @ViewBag.user.FirstName @ViewBag.user.LastName <span class="caret"></span></a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/Account/ProfilePage/">My Profile</a></li>
+                                        <li><a href="/Account/Logout/">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="/Account/"><span class="fa fa-tachometer"></span>&nbsp;&nbsp;Dashboard</a></li>
+                        <li><a href="#"><span class="fa fa-tachometer"></span>&nbsp;&nbsp;Dashboard</a></li>
+                        <li><a href="#"><span class="fa fa-tachometer"></span>&nbsp;&nbsp;Dashboard</a></li>
+                        <!--
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+                            -->
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-fluid main-panel">
+        <div class="side-body">
+            @RenderBody()
+        </div>
+        <div class="clearfix"></div>
+        <div class="copyright-sec">© @DateTime.Now.Year. All rights reserved Beis Medrash Program.</div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/index.js"></script>
+</body>
+</html>

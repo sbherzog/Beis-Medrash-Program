@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeisMedrashProgram", "BeisMedrashProgram\BeisMedrashProgram.csproj", "{44F89237-FC4C-442C-B9A6-B676F849315C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeisMedrashProgram.data", "BeisMedrashProgram.data\BeisMedrashProgram.data.csproj", "{2F983DC5-10DB-45C3-9F90-EC1F273F61BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44F89237-FC4C-442C-B9A6-B676F849315C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F89237-FC4C-442C-B9A6-B676F849315C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F89237-FC4C-442C-B9A6-B676F849315C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F89237-FC4C-442C-B9A6-B676F849315C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F983DC5-10DB-45C3-9F90-EC1F273F61BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F983DC5-10DB-45C3-9F90-EC1F273F61BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F983DC5-10DB-45C3-9F90-EC1F273F61BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F983DC5-10DB-45C3-9F90-EC1F273F61BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
