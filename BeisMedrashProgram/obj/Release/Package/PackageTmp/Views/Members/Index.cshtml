@@ -1,0 +1,218 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Members";
+}
+
+<link href="~/Content/Members.css" rel="stylesheet" />
+
+<div class="well tools-well">
+    <div class="col-md-6 col-xs-12">
+        <button class="btn btn-primary Add-New-Member-btn">Add New Member</button>
+        <button class="btn btn-primary submit-new-member-btn">submit</button>
+        <button class="btn btn-primary update-member-btn">Update</button>
+        <button class="btn btn-success cancel-btn">cancel</button>
+    </div>
+
+    <div class="col-md-3 col-xs-12 pull-right filter-member-type">
+        <select class="form-control" id="filter_member_type">
+            <option value="a">All Members</option>
+            <option value="am">Active Members</option>
+            <option value="s">שכנים</option>
+            <option value="m">מתפלל</option>
+        </select>
+    </div>
+
+    <div class="col-md-3 col-xs-12 search-member-sec">
+        <div class="input-group add-on">
+            <input class="form-control" placeholder="Search" name="srch-term" id="search_member" type="text">
+            <div class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<form class="well" id="members-form">
+    <div class="table-responsive table-members">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>English Name</th>
+                    <th>Hebrew Name</th>
+                    <th>Cell Phone</th>
+                    <th>Total Balance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="form-members">
+        <div class="row">
+            <input id="MemberId" name="MemberId" type="hidden" />
+            <div class="form-group col-md-2">
+                <label for="EnTitle">English Title:</label>
+                <input class="form-control" id="EnTitle" name="EnTitle" type="text" placeholder="English Title" />                
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="LastName">English Last Name:</label>
+                <input class="form-control" id="LastName" name="LastName" type="text" placeholder="English Last Name" />
+                <div class="error-mass">Please Enter a Last Name</div>
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="FirstName">English First Name:</label>
+                <input class="form-control" id="FirstName" name="FirstName" type="text" placeholder="English First Name" />
+                <div class="error-mass">Please Enter a First Name</div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="HeTitle">Hebrew Title:</label>
+                <input class="form-control" id="HeTitle" name="HeTitle" type="text" placeholder="Hebrew Title" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="HeLastName">Hebrew Last Name:</label>
+                <input class="form-control" id="HeLastName" name="HeLastName" type="text" placeholder="Hebrew Last Name" />
+                <div class="error-mass">Please Enter a Last Name</div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="HeFirstName">Hebrew First Name:</label>
+                <input class="form-control" id="HeFirstName" name="HeFirstName" type="text" placeholder="Hebrew First Name" />
+                <div class="error-mass">Please Enter a First Name</div>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="HeSuffix">Hebrew Suffix:</label>
+                <input class="form-control" id="HeSuffix" name="HeSuffix" type="text" placeholder="Hebrew Suffix" />
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="AddNum">Address Number:</label>
+                <input class="form-control" id="AddNum" name="AddNum" type="text" placeholder="Address Number" />
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="AddStreet">Street:</label>
+                <input class="form-control" id="AddStreet" name="AddStreet" type="text" placeholder="Street" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="Apt">Apt:</label>
+                <input class="form-control" id="Apt" name="Apt" type="text" placeholder="Apt" />
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group col-md-4">
+                <label for="City">City:</label>
+                <input class="form-control" id="City" name="City" type="text" placeholder="City" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="State">State:</label>
+                <input class="form-control" id="State" name="State" type="text" placeholder="State" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="Zip">Zip:</label>
+                <input class="form-control" id="Zip" name="Zip" type="text" placeholder="Zip" />
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="HomePhone">Home Phone:</label>
+                <input class="form-control" id="HomePhone" name="HomePhone" type="text" placeholder="Home Phone" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="HomePhone">Cell Phone:</label>
+                <input class="form-control" id="CellPhone" name="CellPhone" type="text" placeholder="Cell Phone" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="Email">Email:</label>
+                <input class="form-control" id="Email" name="Email" type="text" placeholder="Email" />
+                <div class="error-mass">Please Enter a valid email</div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="Notes">Notes:</label>
+                <textarea style="resize: none;" class="form-control" id="Notes" name="Notes" type="text" placeholder="Notes"  rows="4" cols="50"></textarea>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-3">
+                <input type="checkbox" id="Active" name="Active">
+                <label for="Active">Active</label>
+            </div>
+
+            <div class="col-md-3">
+                <input type="checkbox" id="SendEmail" name="SendEmail">
+                <label for="SendEmail">Send Email</label>
+            </div>
+
+            <div class="col-md-3">
+                <input type="checkbox" id="SendStatement" name="SendStatement">
+                <label for="SendStatement">Send Statement</label>
+            </div>
+
+            <div class="col-md-3">
+                <select class="form-control" id="Type" name="Type">
+                    <option value="">Member Type</option>
+                    <option value="מתפלל">מתפלל</option>
+                    <option value="שכנים">שכנים</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+  <!-- Delete Member Modal -->
+<div class="modal fade" id="Delete_Member_Modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete <span class="member-name"></span> (Member)</h4>
+            </div>
+            <div class="modal-body">
+                <p>are you sure you want to delete: <span class="member-name"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger delete-member" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.js"></script>
+<script src="~/Scripts/Members.js"></script>
+}
+
+
+
+

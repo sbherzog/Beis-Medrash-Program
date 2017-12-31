@@ -10,7 +10,7 @@
       <Column Name="PasswordSalt" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="BeisMedrashId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="tbl_user_tbl_forgotten_password" Member="tbl_forgotten_passwords" ThisKey="Id" OtherKey="UserId" Type="tbl_forgotten_password" />
-      <Association Name="tbl_beis_medrash1_tbl_user" Member="tbl_beis_medrash" ThisKey="BeisMedrashId" OtherKey="Id" Type="tbl_beis_medrash" IsForeignKey="true" />
+      <Association Name="tbl_beis_medrash_tbl_user" Member="tbl_beis_medrash" ThisKey="BeisMedrashId" OtherKey="Id" Type="tbl_beis_medrash" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_forgotten_passwords" Member="tbl_forgotten_passwords">
@@ -22,19 +22,35 @@
       <Association Name="tbl_user_tbl_forgotten_password" Member="tbl_user" ThisKey="UserId" OtherKey="Id" Type="tbl_user" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_beis_medrash" Member="tbl_beis_medrashes">
+    <Type Name="tbl_beis_medrash">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BeisMedrashName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BeisMedrashCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_beis_medrash_tbl_user" Member="tbl_users" ThisKey="Id" OtherKey="BeisMedrashId" Type="tbl_user" />
+      <Association Name="tbl_beis_medrash_tbl_member" Member="tbl_member" ThisKey="Id" OtherKey="MemberId" Type="tbl_member" Cardinality="One" />
+    </Type>
+  </Table>
   <Table Name="dbo.tbl_members" Member="tbl_members">
     <Type Name="tbl_member">
-      <Column Name="MemberId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MemberId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="EnTitle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="LastName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="FirstName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="HeTitle" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="HeLastName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="HeFirstName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="HeSuffix" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="AddNum" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="AddStreet" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="Apt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="City" Type="System.Data.Linq.Binary" DbType="VarBinary(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Zip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HomePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -49,22 +65,7 @@
       <Column Name="CreteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="SyncTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="BeisMedrashId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="tbl_beis_medrash1_tbl_member" Member="tbl_beis_medrash" ThisKey="MemberId" OtherKey="Id" Type="tbl_beis_medrash" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_beis_medrash" Member="tbl_beis_medrashes">
-    <Type Name="tbl_beis_medrash">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BeisMedrashName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Logo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Zip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BeisMedrashCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="tbl_beis_medrash1_tbl_user" Member="tbl_users" ThisKey="Id" OtherKey="BeisMedrashId" Type="tbl_user" />
-      <Association Name="tbl_beis_medrash1_tbl_member" Member="tbl_member" ThisKey="Id" OtherKey="MemberId" Type="tbl_member" Cardinality="One" />
+      <Association Name="tbl_beis_medrash_tbl_member" Member="tbl_beis_medrash" ThisKey="MemberId" OtherKey="Id" Type="tbl_beis_medrash" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

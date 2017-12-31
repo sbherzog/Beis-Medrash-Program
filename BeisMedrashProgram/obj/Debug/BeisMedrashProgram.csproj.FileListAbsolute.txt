@@ -40,3 +40,7 @@
 \\psf\home\documents\visual studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\obj\Debug\BeisMedrashProgram.csprojResolveAssemblyReference.cache
 \\psf\home\documents\visual studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\obj\Debug\BeisMedrashProgram.dll
 \\psf\home\documents\visual studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\obj\Debug\BeisMedrashProgram.pdb
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\bin\EPPlus.dll
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\bin\EPPlus.xml
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\bin\ExcelDataReader.dll
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram\bin\ExcelDataReader.xml

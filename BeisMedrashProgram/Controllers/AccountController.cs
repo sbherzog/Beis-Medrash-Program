@@ -16,6 +16,7 @@ namespace BeisMedrashProgram.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                ViewBag.page = "Dashboard";
                 return View();
             }
             return RedirectToAction("Login", "Account");
@@ -95,7 +96,7 @@ namespace BeisMedrashProgram.Controllers
             return RedirectToAction("Index", "Account");
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -105,14 +106,16 @@ namespace BeisMedrashProgram.Controllers
             var vm = new LoginViewModel
             {
                 Email = TempData["email"] as string,
-                ErrorMessage = TempData["error"] as string
+                ErrorMessage = TempData["error"] as string,
+                ReturnUrl = returnUrl,                
             };
             return View(vm);
         }
 
         [HttpPost]
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(string email, string password, string returnUrl)
         {
+            returnUrl = (returnUrl != "") ? returnUrl : "/Account/";
             var db = new UserRepository(Properties.Settings.Default.ConStr);
             var user = db.Login(email, password);
             if (user == null)
@@ -123,7 +126,7 @@ namespace BeisMedrashProgram.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(email, true);
-            return RedirectToAction("Index", "Account");
+            return Redirect(returnUrl);
         }
 
         public ActionResult Logout()
@@ -193,6 +196,7 @@ namespace BeisMedrashProgram.Controllers
         [Authorize]
         public ActionResult ProfilePage()
         {
+            ViewBag.page = "ProfilePage";
             return View();
         }
 
@@ -210,10 +214,17 @@ namespace BeisMedrashProgram.Controllers
             }
         }
 
-        public ActionResult CheckPassword(string Password)
+        public bool CheckPassword(string currentPassword)
         {
-             
-            return Json(true, JsonRequestBehavior.AllowGet);
+            var db = new UserRepository(Properties.Settings.Default.ConStr);
+            bool correctPassword = false;
+
+            var user = db.Login(User.Identity.Name, currentPassword);
+            if (user != null)
+            {
+                correctPassword = true;
+            }
+            return correctPassword;
         }
 
         private tbl_beis_medrash checkBeisMedrashCode(int BeisMedrashCode, string BeisMedrashName)
@@ -222,5 +233,22 @@ namespace BeisMedrashProgram.Controllers
             var bm = db.GetBeisMedrash(BeisMedrashCode, BeisMedrashName);
             return bm;
         }
+
+        [HttpPost]
+        public ActionResult UpdateProfile(string firstName, string lastName, string email, string password)
+        {
+            if (firstName == null || lastName == null || email == null || password == null)
+            {
+                return RedirectToAction("ProfilePage", "Account");
+            }
+            var db = new UserRepository(Properties.Settings.Default.ConStr);
+            db.UpdateUser(firstName, lastName, email, password);
+            var user = db.GetUser(email);
+
+            FormsAuthentication.SignOut();
+            FormsAuthentication.SetAuthCookie(user.Email, true);
+            return RedirectToAction("ProfilePage", "Account");
+        }
+
     }
 }

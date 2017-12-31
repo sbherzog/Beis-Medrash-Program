@@ -36,12 +36,12 @@ namespace BeisMedrashProgram.data
     partial void Inserttbl_forgotten_password(tbl_forgotten_password instance);
     partial void Updatetbl_forgotten_password(tbl_forgotten_password instance);
     partial void Deletetbl_forgotten_password(tbl_forgotten_password instance);
-    partial void Inserttbl_member(tbl_member instance);
-    partial void Updatetbl_member(tbl_member instance);
-    partial void Deletetbl_member(tbl_member instance);
     partial void Inserttbl_beis_medrash(tbl_beis_medrash instance);
     partial void Updatetbl_beis_medrash(tbl_beis_medrash instance);
     partial void Deletetbl_beis_medrash(tbl_beis_medrash instance);
+    partial void Inserttbl_member(tbl_member instance);
+    partial void Updatetbl_member(tbl_member instance);
+    partial void Deletetbl_member(tbl_member instance);
     #endregion
 		
 		public BeisMedrashDBDataContext() : 
@@ -90,19 +90,19 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_member> tbl_members
-		{
-			get
-			{
-				return this.GetTable<tbl_member>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_beis_medrash> tbl_beis_medrashes
 		{
 			get
 			{
 				return this.GetTable<tbl_beis_medrash>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_member> tbl_members
+		{
+			get
+			{
+				return this.GetTable<tbl_member>();
 			}
 		}
 	}
@@ -315,7 +315,7 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash1_tbl_user", Storage="_tbl_beis_medrash", ThisKey="BeisMedrashId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_user", Storage="_tbl_beis_medrash", ThisKey="BeisMedrashId", OtherKey="Id", IsForeignKey=true)]
 		public tbl_beis_medrash tbl_beis_medrash
 		{
 			get
@@ -557,6 +557,320 @@ namespace BeisMedrashProgram.data
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_beis_medrash")]
+	public partial class tbl_beis_medrash : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _BeisMedrashName;
+		
+		private string _Logo;
+		
+		private string _Address;
+		
+		private string _City;
+		
+		private string _State;
+		
+		private string _Zip;
+		
+		private string _Phone;
+		
+		private int _BeisMedrashCode;
+		
+		private EntitySet<tbl_user> _tbl_users;
+		
+		private EntityRef<tbl_member> _tbl_member;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnBeisMedrashNameChanging(string value);
+    partial void OnBeisMedrashNameChanged();
+    partial void OnLogoChanging(string value);
+    partial void OnLogoChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnZipChanging(string value);
+    partial void OnZipChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnBeisMedrashCodeChanging(int value);
+    partial void OnBeisMedrashCodeChanged();
+    #endregion
+		
+		public tbl_beis_medrash()
+		{
+			this._tbl_users = new EntitySet<tbl_user>(new Action<tbl_user>(this.attach_tbl_users), new Action<tbl_user>(this.detach_tbl_users));
+			this._tbl_member = default(EntityRef<tbl_member>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeisMedrashName", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string BeisMedrashName
+		{
+			get
+			{
+				return this._BeisMedrashName;
+			}
+			set
+			{
+				if ((this._BeisMedrashName != value))
+				{
+					this.OnBeisMedrashNameChanging(value);
+					this.SendPropertyChanging();
+					this._BeisMedrashName = value;
+					this.SendPropertyChanged("BeisMedrashName");
+					this.OnBeisMedrashNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logo", DbType="VarChar(50)")]
+		public string Logo
+		{
+			get
+			{
+				return this._Logo;
+			}
+			set
+			{
+				if ((this._Logo != value))
+				{
+					this.OnLogoChanging(value);
+					this.SendPropertyChanging();
+					this._Logo = value;
+					this.SendPropertyChanged("Logo");
+					this.OnLogoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(150)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(150)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="VarChar(50)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zip", DbType="VarChar(50)")]
+		public string Zip
+		{
+			get
+			{
+				return this._Zip;
+			}
+			set
+			{
+				if ((this._Zip != value))
+				{
+					this.OnZipChanging(value);
+					this.SendPropertyChanging();
+					this._Zip = value;
+					this.SendPropertyChanged("Zip");
+					this.OnZipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(50)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeisMedrashCode", DbType="Int NOT NULL")]
+		public int BeisMedrashCode
+		{
+			get
+			{
+				return this._BeisMedrashCode;
+			}
+			set
+			{
+				if ((this._BeisMedrashCode != value))
+				{
+					this.OnBeisMedrashCodeChanging(value);
+					this.SendPropertyChanging();
+					this._BeisMedrashCode = value;
+					this.SendPropertyChanged("BeisMedrashCode");
+					this.OnBeisMedrashCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_user", Storage="_tbl_users", ThisKey="Id", OtherKey="BeisMedrashId")]
+		public EntitySet<tbl_user> tbl_users
+		{
+			get
+			{
+				return this._tbl_users;
+			}
+			set
+			{
+				this._tbl_users.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_member", ThisKey="Id", OtherKey="MemberId", IsUnique=true, IsForeignKey=false)]
+		public tbl_member tbl_member
+		{
+			get
+			{
+				return this._tbl_member.Entity;
+			}
+			set
+			{
+				tbl_member previousValue = this._tbl_member.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_member.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_member.Entity = null;
+						previousValue.tbl_beis_medrash = null;
+					}
+					this._tbl_member.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_beis_medrash = this;
+					}
+					this.SendPropertyChanged("tbl_member");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbl_users(tbl_user entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_beis_medrash = this;
+		}
+		
+		private void detach_tbl_users(tbl_user entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_beis_medrash = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_members")]
 	public partial class tbl_member : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -575,6 +889,8 @@ namespace BeisMedrashProgram.data
 		
 		private string _HeLastName;
 		
+		private string _HeFirstName;
+		
 		private string _HeSuffix;
 		
 		private string _AddNum;
@@ -583,7 +899,7 @@ namespace BeisMedrashProgram.data
 		
 		private string _Apt;
 		
-		private System.Data.Linq.Binary _City;
+		private string _City;
 		
 		private string _State;
 		
@@ -631,6 +947,8 @@ namespace BeisMedrashProgram.data
     partial void OnHeTitleChanged();
     partial void OnHeLastNameChanging(string value);
     partial void OnHeLastNameChanged();
+    partial void OnHeFirstNameChanging(string value);
+    partial void OnHeFirstNameChanged();
     partial void OnHeSuffixChanging(string value);
     partial void OnHeSuffixChanged();
     partial void OnAddNumChanging(string value);
@@ -639,7 +957,7 @@ namespace BeisMedrashProgram.data
     partial void OnAddStreetChanged();
     partial void OnAptChanging(string value);
     partial void OnAptChanged();
-    partial void OnCityChanging(System.Data.Linq.Binary value);
+    partial void OnCityChanging(string value);
     partial void OnCityChanged();
     partial void OnStateChanging(string value);
     partial void OnStateChanged();
@@ -677,7 +995,7 @@ namespace BeisMedrashProgram.data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MemberId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MemberId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MemberId
 		{
 			get
@@ -801,6 +1119,26 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeFirstName", DbType="NVarChar(150)")]
+		public string HeFirstName
+		{
+			get
+			{
+				return this._HeFirstName;
+			}
+			set
+			{
+				if ((this._HeFirstName != value))
+				{
+					this.OnHeFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._HeFirstName = value;
+					this.SendPropertyChanged("HeFirstName");
+					this.OnHeFirstNameChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeSuffix", DbType="NVarChar(150)")]
 		public string HeSuffix
 		{
@@ -881,8 +1219,8 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarBinary(50)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary City
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
+		public string City
 		{
 			get
 			{
@@ -1181,7 +1519,7 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash1_tbl_member", Storage="_tbl_beis_medrash", ThisKey="MemberId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_beis_medrash", ThisKey="MemberId", OtherKey="Id", IsForeignKey=true)]
 		public tbl_beis_medrash tbl_beis_medrash
 		{
 			get
@@ -1233,320 +1571,6 @@ namespace BeisMedrashProgram.data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_beis_medrash")]
-	public partial class tbl_beis_medrash : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _BeisMedrashName;
-		
-		private string _Logo;
-		
-		private string _Address;
-		
-		private string _City;
-		
-		private string _State;
-		
-		private string _Zip;
-		
-		private string _Phone;
-		
-		private int _BeisMedrashCode;
-		
-		private EntitySet<tbl_user> _tbl_users;
-		
-		private EntityRef<tbl_member> _tbl_member;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnBeisMedrashNameChanging(string value);
-    partial void OnBeisMedrashNameChanged();
-    partial void OnLogoChanging(string value);
-    partial void OnLogoChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnCityChanging(string value);
-    partial void OnCityChanged();
-    partial void OnStateChanging(string value);
-    partial void OnStateChanged();
-    partial void OnZipChanging(string value);
-    partial void OnZipChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnBeisMedrashCodeChanging(int value);
-    partial void OnBeisMedrashCodeChanged();
-    #endregion
-		
-		public tbl_beis_medrash()
-		{
-			this._tbl_users = new EntitySet<tbl_user>(new Action<tbl_user>(this.attach_tbl_users), new Action<tbl_user>(this.detach_tbl_users));
-			this._tbl_member = default(EntityRef<tbl_member>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeisMedrashName", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
-		public string BeisMedrashName
-		{
-			get
-			{
-				return this._BeisMedrashName;
-			}
-			set
-			{
-				if ((this._BeisMedrashName != value))
-				{
-					this.OnBeisMedrashNameChanging(value);
-					this.SendPropertyChanging();
-					this._BeisMedrashName = value;
-					this.SendPropertyChanged("BeisMedrashName");
-					this.OnBeisMedrashNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logo", DbType="VarChar(50)")]
-		public string Logo
-		{
-			get
-			{
-				return this._Logo;
-			}
-			set
-			{
-				if ((this._Logo != value))
-				{
-					this.OnLogoChanging(value);
-					this.SendPropertyChanging();
-					this._Logo = value;
-					this.SendPropertyChanged("Logo");
-					this.OnLogoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(150)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(150)")]
-		public string City
-		{
-			get
-			{
-				return this._City;
-			}
-			set
-			{
-				if ((this._City != value))
-				{
-					this.OnCityChanging(value);
-					this.SendPropertyChanging();
-					this._City = value;
-					this.SendPropertyChanged("City");
-					this.OnCityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="VarChar(50)")]
-		public string State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this.OnStateChanging(value);
-					this.SendPropertyChanging();
-					this._State = value;
-					this.SendPropertyChanged("State");
-					this.OnStateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zip", DbType="VarChar(50)")]
-		public string Zip
-		{
-			get
-			{
-				return this._Zip;
-			}
-			set
-			{
-				if ((this._Zip != value))
-				{
-					this.OnZipChanging(value);
-					this.SendPropertyChanging();
-					this._Zip = value;
-					this.SendPropertyChanged("Zip");
-					this.OnZipChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(50)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeisMedrashCode", DbType="Int NOT NULL")]
-		public int BeisMedrashCode
-		{
-			get
-			{
-				return this._BeisMedrashCode;
-			}
-			set
-			{
-				if ((this._BeisMedrashCode != value))
-				{
-					this.OnBeisMedrashCodeChanging(value);
-					this.SendPropertyChanging();
-					this._BeisMedrashCode = value;
-					this.SendPropertyChanged("BeisMedrashCode");
-					this.OnBeisMedrashCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash1_tbl_user", Storage="_tbl_users", ThisKey="Id", OtherKey="BeisMedrashId")]
-		public EntitySet<tbl_user> tbl_users
-		{
-			get
-			{
-				return this._tbl_users;
-			}
-			set
-			{
-				this._tbl_users.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash1_tbl_member", Storage="_tbl_member", ThisKey="Id", OtherKey="MemberId", IsUnique=true, IsForeignKey=false)]
-		public tbl_member tbl_member
-		{
-			get
-			{
-				return this._tbl_member.Entity;
-			}
-			set
-			{
-				tbl_member previousValue = this._tbl_member.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_member.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_member.Entity = null;
-						previousValue.tbl_beis_medrash = null;
-					}
-					this._tbl_member.Entity = value;
-					if ((value != null))
-					{
-						value.tbl_beis_medrash = this;
-					}
-					this.SendPropertyChanged("tbl_member");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tbl_users(tbl_user entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_beis_medrash = this;
-		}
-		
-		private void detach_tbl_users(tbl_user entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_beis_medrash = null;
 		}
 	}
 }

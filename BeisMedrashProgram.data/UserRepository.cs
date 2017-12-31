@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,24 @@ namespace BeisMedrashProgram.data
             }
         }
 
+        public void UpdateUser(string firstName, string lastName, string emailAddress, string password)
+        {
+            var user = GetUser(System.Web.HttpContext.Current.User.Identity.Name);
+            string salt = PasswordHelper.GenerateSalt();
+            string hash = PasswordHelper.HashPassword(password, salt);
+
+            if (password == "******")
+            {
+                salt = user.PasswordSalt;
+                hash = user.PasswordHash;
+            }
+
+            using (var context = new BeisMedrashDBDataContext(_connectionString))
+            {
+                context.ExecuteCommand("UPDATE tbl_users SET Email = {0}, FirstName= {1}, LastName={2}, PasswordHash={3}, PasswordSalt={4} WHERE ID = {5}", emailAddress, firstName, lastName, hash, salt, user.Id);
+            }
+        }   
+
         public tbl_user Login(string emailAddress, string password)
         {
             var user = GetUser(emailAddress);
@@ -58,7 +77,6 @@ namespace BeisMedrashProgram.data
             {
                 return user;
             }
-
             return null;
         }
 

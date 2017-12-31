@@ -1,0 +1,139 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "My Profile";
+}
+<link href="~/Content/profile.css" rel="stylesheet" />
+
+<div class="col-md-6">
+    <div class="bg-white-color">
+        <div class="header">
+                <span class="pull-right btn-sec">
+                    <button type="button" class="btn btn-success btn-xs reset-profile">Reset</button>
+                    <button type="button" class="btn btn-primary btn-xs update-profile" onclick="updateInfo('profile'); return false;">Update</button>
+                </span>
+                <legend class="title">My Profile</legend>
+                <span class="clearfix"></span>
+        </div>
+        <form id="profile-form">
+            <label for="first_Name">First Name:</label>
+            <div class="form-group">
+                <input type="text" name="firstName" id="first_Name" placeholder="First Name" class="form-control" data-orig="@ViewBag.user.FirstName" value="@ViewBag.user.FirstName " />
+                <div class="error"></div>
+            </div>
+
+            <label for="last_name">Last Name:</label>
+            <div class="form-group">
+                <input type="text" name="lastName" id="last_name" placeholder="Last Name" class="form-control" data-orig="@ViewBag.user.LastName" value="@ViewBag.user.LastName" />
+                <div class="error"></div>
+            </div>
+
+            <label for="email">Email:</label>
+            <div class="form-group">
+                <input type="text" id="email" name="email" placeholder="Email Address" class="form-control" data-orig="@ViewBag.user.Email"  value="@ViewBag.user.Email" />
+                <div class="error"></div>
+            </div>
+
+            <label for="password">Password:</label>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" class="form-control" data-orig="******" value="******" />
+                <div class="error"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="bg-white-color">
+        <div class="header">
+            <span class="pull-right btn-sec">
+                <button type="button" class="btn btn-success btn-xs reset-beis-medrash">Reset</button>
+                <button type="button" class="btn btn-primary btn-xs update-beis-medrash" onclick="updateInfo('beis-medrash'); return false;">Update</button>
+            </span>
+            <legend class="title">Beis Medrash Info</legend>
+            <span class="clearfix"></span>
+        </div>
+
+        <form id="beis-medrash-form">
+            <div class="logo-sec col-md-4 p-0">
+                <a href="#"><img src="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" class="beis-medrash-logo-image" /></a>
+                <input type="file" class="form-control beis-medrash-logo-input hidden" data-orig="@ViewBag.BeisMedrash.Logo" name="file" accept="image/*" onchange="readURL(this);" value="@ViewBag.BeisMedrash.Logo" />
+            </div>
+
+            <div class="col-md-8">
+                <label for="Beis_Medrash_Name">Beis Medrash Name:</label> <div class="pull-right"># @ViewBag.BeisMedrash.BeisMedrashCode</div>
+                <div class="form-group">
+                    <input type="text" name="BeisMedrashName" id="Beis_Medrash_Name" placeholder="Beis Medrash Name" data-orig="@ViewBag.BeisMedrash.BeisMedrashName" class="form-control" value="@ViewBag.BeisMedrash.BeisMedrashName" />
+                    <div class="error"></div>
+                </div>
+
+                <label for="Beis_Medrash_Phone">Phone:</label>
+                <div class="form-group">
+                    <input type="text" name="Phone" id="Beis_Medrash_Phone" placeholder="Phone" class="form-control" data-orig="@ViewBag.BeisMedrash.Phone" value="@ViewBag.BeisMedrash.Phone" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <label for="Beis_Medrash_Address">Address:</label>
+            <div class="form-group">
+                <input type="text" name="Address" id="Beis_Medrash_Address" placeholder="Address" class="form-control" data-orig="@ViewBag.BeisMedrash.Address" value="@ViewBag.BeisMedrash.Address" />
+                <div class="error"></div>
+            </div>
+
+            <div class="col-md-4 p-0">
+                <label for="Beis_Medrash_City">City:</label>
+                <div class="form-group">
+                    <input type="text" name="City" id="Beis_Medrash_City" placeholder="City" class="form-control" data-orig="@ViewBag.BeisMedrash.City" value="@ViewBag.BeisMedrash.City" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="col-md-4 beis-medrash-state-container">
+                <label for="Beis_Medrash_State">State:</label>
+                <div class="form-group">
+                    <input type="text" name="State" id="Beis_Medrash_State" placeholder="State" class="form-control" data-orig="@ViewBag.BeisMedrash.State" value="@ViewBag.BeisMedrash.State" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="col-md-4 p-0">
+                <label for="Beis_Medrash_Zip">Zip:</label>
+                <div class="form-group">
+                    <input type="text" name="Zip" id="Beis_Medrash_Zip" placeholder="Zip" class="form-control" data-orig="@ViewBag.BeisMedrash.Zip" value="@ViewBag.BeisMedrash.Zip" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="updateInfo" role="dialog">
+    <div class="modal-dialog" style="max-width:350px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>For security reasons please enter your Current password</p>
+                <input type="password" class="form-control" name="current-password" placeholder="Current Password" id="current_password" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="update_profile" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-primary" id="update_beis_medrash" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts
+{
+   <script src="~/Scripts/Account/profile.js"></script>
+}

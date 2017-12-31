@@ -1,0 +1,6 @@
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\bin\Debug\BeisMedrashProgram.data.dll.config
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\bin\Debug\BeisMedrashProgram.data.dll
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\bin\Debug\BeisMedrashProgram.data.pdb
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\obj\Debug\BeisMedrashProgram.data.dll
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\obj\Debug\BeisMedrashProgram.data.pdb
+\\psf\Home\Documents\Visual Studio 2015\Projects\BeisMedrashProgram\BeisMedrashProgram.data\obj\Debug\BeisMedrashProgram.data.csprojResolveAssemblyReference.cache

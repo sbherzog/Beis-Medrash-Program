@@ -1,0 +1,36 @@
+﻿/*ProfilePage*/
+.header {
+    color: #333;
+    font-weight: 300;
+    font-size: 22px;
+    margin-bottom:15px;
+}
+.title {
+    margin: 0;
+    color: #333;
+    font-weight: 300;
+}
+legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+.logo-sec{
+    text-align:center;
+}
+
+.btn-sec{
+    margin-top:-15px;
+}
+
+#update_beis_medrash, #update_profile{
+    display:none;
+}
+.beis-medrash-logo-image{
+    max-width:100%;
+    max-height:128px;
+}
