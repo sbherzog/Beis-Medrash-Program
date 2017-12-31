@@ -55,11 +55,11 @@
             <span class="clearfix"></span>
         </div>
 
-        <form id="beis-medrash-form">
+        <form id="beis-medrash-form" method="post" action="/Account/UpdateBeisMedrashProfile/" enctype="multipart/form-data">
             <div class="logo-sec col-md-4 p-0">
                 <a class="beis-medrash-logo" href="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" title="@ViewBag.BeisMedrash.BeisMedrashName - Beis Medrash Logos"><img src="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" class="beis-medrash-logo-image" /></a>               
                 <br /><a href="#" class="beis-medrash-logo-upload-btn">upload new image</a>
-                <input type="file" class="form-control beis-medrash-logo-input hidden" data-orig="@ViewBag.BeisMedrash.Logo" name="file" accept="image/*" onchange="readURL(this);" value="@ViewBag.BeisMedrash.Logo" />
+                <input type="file" class="form-control beis-medrash-logo-input hidden" data-orig="@ViewBag.BeisMedrash.Logo" name="file" accept="image/*" onchange="readURL(this);" />
             </div>
 
             <div class="col-md-8">
@@ -108,8 +108,6 @@
         </form>
     </div>
 </div>
-
-
 
 
 

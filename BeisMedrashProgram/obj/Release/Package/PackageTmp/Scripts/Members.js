@@ -12,6 +12,7 @@
     });
 
     $('.Add-New-Member-btn').on('click', function () {
+        $('.submit-new-member-btn').show();
         HideTable();
     })
 
@@ -21,6 +22,7 @@
     })
 
     $('.table-members').on('click', '.edit-member', function () {
+        $('.update-member-btn').show();
         HideTable();
         var MemberId = $(this).closest('tr').attr('data-member-id');
         $.get('/Members/MemberById', { MemberId: MemberId }, function (result) {
@@ -178,7 +180,6 @@ function SoweTable(MemberId) {
 function HideTable(){
     $('.form-members').show();
     $('.cancel-btn').show();
-    $('.update-member-btn').show();
     $('.table-members').hide();
     $('.Add-New-Member-btn').hide();
     $('.search-member-sec').hide();

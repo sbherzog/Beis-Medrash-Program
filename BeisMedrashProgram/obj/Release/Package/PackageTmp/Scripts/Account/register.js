@@ -7,8 +7,9 @@
         if (this.files.item(0)) {
             $('.file-name').html('<span style="color:Blue; font-size:10px">File Name: ' + this.files.item(0).name + '</span>&nbsp;&nbsp;<span title="remove-file" class="btn btn-danger btn-xs remove-file">x</span>');
         } else {
-            $('.upload-logo-input').val("");
-            $('.file-name').html('');
+            //$('.upload-logo-input').val("");
+            //$('.file-name').html('');
+            //$('.image-upload-display').remove();
         }
     })
 
@@ -16,6 +17,7 @@
         e.stopPropagation();
         $('.upload-logo-input').val("");
         $('.file-name').html('');
+        $('.image-upload-display').remove();
     })
 
     $('#form-register').on('click', '.beis-medrash-already-registered', function () {
@@ -108,3 +110,14 @@
         return false;
     });
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        $('.image-upload-display').remove();
+        reader.onload = function (e) {
+            $('.upload-logo-btn').append('<img class="image-upload-display" src="' + e.target.result + '">');
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

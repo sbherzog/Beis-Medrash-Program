@@ -25,6 +25,14 @@ namespace BeisMedrashProgram.data
             }
         }
 
+        public void UpdateBeisMedrashProfile(tbl_beis_medrash beisMedrash)
+        {
+            using (var context = new BeisMedrashDBDataContext(_connectionString))
+            {
+                context.ExecuteCommand("UPDATE tbl_beis_medrash SET BeisMedrashName={0}, Logo={1}, Address={2}, City={3}, State={4}, Zip={5}, Phone={6} WHERE ID = {7}", beisMedrash.BeisMedrashName, beisMedrash.Logo, beisMedrash.Address, beisMedrash.City, beisMedrash.State, beisMedrash.Zip, beisMedrash.Phone, beisMedrash.Id);
+            }
+        }
+
         public void AddUser(string firstName, string lastName, string emailAddress, string password, int beisMedrashId)
         {
             string salt = PasswordHelper.GenerateSalt();

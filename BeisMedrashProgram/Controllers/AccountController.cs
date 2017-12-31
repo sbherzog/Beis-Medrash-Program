@@ -200,20 +200,6 @@ namespace BeisMedrashProgram.Controllers
             return View();
         }
 
-        private string SaveFile(HttpPostedFileBase file, string fileFolder)
-        {
-            if (file != null)
-            {
-                string fileName = file.FileName;
-                file.SaveAs(Server.MapPath("~/Images/") + fileFolder + "/" + fileName);
-                return fileName;
-            }
-            else
-            {
-                return "No_image_available.png";
-            }
-        }
-
         public bool CheckPassword(string currentPassword)
         {
             var db = new UserRepository(Properties.Settings.Default.ConStr);
@@ -244,11 +230,46 @@ namespace BeisMedrashProgram.Controllers
             var db = new UserRepository(Properties.Settings.Default.ConStr);
             db.UpdateUser(firstName, lastName, email, password);
             var user = db.GetUser(email);
-
-            FormsAuthentication.SignOut();
+            System.Web.HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new System.Security.Principal.GenericIdentity(user.Email), new string[] { /* fill roles if any */ });
             FormsAuthentication.SetAuthCookie(user.Email, true);
             return RedirectToAction("ProfilePage", "Account");
         }
 
+        public ActionResult UpdateBeisMedrashProfile(HttpPostedFileBase file, tbl_beis_medrash beisMedrash)
+        {
+            var db = new UserRepository(Properties.Settings.Default.ConStr);
+            var user = db.GetUser(System.Web.HttpContext.Current.User.Identity.Name);
+            var BM = db.GetBeisMedrashById(user.BeisMedrashId);
+
+            if (beisMedrash.BeisMedrashName == null)
+            {
+                return RedirectToAction("ProfilePage", "Account");
+            }
+
+            if (file != null)
+            {
+                beisMedrash.Logo = SaveFile(file, "BeisMedrashLogos");
+            }else
+            {
+                beisMedrash.Logo = BM.Logo;
+            }
+            beisMedrash.Id = BM.Id;
+            db.UpdateBeisMedrashProfile(beisMedrash);
+            return RedirectToAction("ProfilePage", "Account");
+        }
+
+        private string SaveFile(HttpPostedFileBase file, string fileFolder)
+        {
+            if (file != null)
+            {
+                string fileName = file.FileName;
+                file.SaveAs(Server.MapPath("~/Images/") + fileFolder + "/" + fileName);
+                return fileName;
+            }
+            else
+            {
+                return "No_image_available.png";
+            }
+        }
     }
 }

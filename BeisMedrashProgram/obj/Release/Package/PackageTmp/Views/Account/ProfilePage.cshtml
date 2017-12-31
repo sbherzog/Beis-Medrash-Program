@@ -4,6 +4,7 @@
     ViewBag.Title = "My Profile";
 }
 <link href="~/Content/profile.css" rel="stylesheet" />
+<link href="~/Content/colorbox.css" rel="stylesheet" />
 
 <div class="col-md-6">
     <div class="bg-white-color">
@@ -15,7 +16,7 @@
                 <legend class="title">My Profile</legend>
                 <span class="clearfix"></span>
         </div>
-        <form id="profile-form">
+        <form id="profile-form" method="post" action="/Account/UpdateProfile/">
             <label for="first_Name">First Name:</label>
             <div class="form-group">
                 <input type="text" name="firstName" id="first_Name" placeholder="First Name" class="form-control" data-orig="@ViewBag.user.FirstName" value="@ViewBag.user.FirstName " />
@@ -54,10 +55,11 @@
             <span class="clearfix"></span>
         </div>
 
-        <form id="beis-medrash-form">
+        <form id="beis-medrash-form" method="post" action="/Account/UpdateBeisMedrashProfile/" enctype="multipart/form-data">
             <div class="logo-sec col-md-4 p-0">
-                <a href="#"><img src="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" class="beis-medrash-logo-image" /></a>
-                <input type="file" class="form-control beis-medrash-logo-input hidden" data-orig="@ViewBag.BeisMedrash.Logo" name="file" accept="image/*" onchange="readURL(this);" value="@ViewBag.BeisMedrash.Logo" />
+                <a class="beis-medrash-logo" href="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" title="@ViewBag.BeisMedrash.BeisMedrashName - Beis Medrash Logos"><img src="~/Images/BeisMedrashLogos/@ViewBag.BeisMedrash.Logo" class="beis-medrash-logo-image" /></a>               
+                <br /><a href="#" class="beis-medrash-logo-upload-btn">upload new image</a>
+                <input type="file" class="form-control beis-medrash-logo-input hidden" data-orig="@ViewBag.BeisMedrash.Logo" name="file" accept="image/*" onchange="readURL(this);" />
             </div>
 
             <div class="col-md-8">
@@ -109,8 +111,6 @@
 
 
 
-
-
 <div class="modal fade" id="updateInfo" role="dialog">
     <div class="modal-dialog" style="max-width:350px">
         <div class="modal-content">
@@ -120,12 +120,12 @@
             </div>
             <div class="modal-body">
                 <p>For security reasons please enter your Current password</p>
-                <input type="password" class="form-control" name="current-password" placeholder="Current Password" id="current_password" />
+                <input type="password" class="form-control" name="currentPassword" placeholder="Current Password" id="current_password" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="update_profile" data-dismiss="modal">Update</button>
-                <button type="button" class="btn btn-primary" id="update_beis_medrash" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-primary" id="update_profile">Update</button>
+                <button type="button" class="btn btn-primary" id="update_beis_medrash">Update</button>
             </div>
         </div>
 
@@ -135,5 +135,6 @@
 
 @section scripts
 {
-   <script src="~/Scripts/Account/profile.js"></script>
+    <script src="~/Scripts/jquery.colorbox.js"></script>
+    <script src="~/Scripts/Account/profile.js"></script>
 }

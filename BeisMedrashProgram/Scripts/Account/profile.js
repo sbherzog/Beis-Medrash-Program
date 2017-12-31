@@ -53,43 +53,75 @@
         }
     })
 
+    $('#updateInfo').on('shown.bs.modal', function (e) {
+        $(this).find('input').focus();
+    })
 
     $('#updateInfo').on('hidden.bs.modal', function (e) {
         $(this).find('.modal-body').find('.alert').remove();
         $(this).find('input').val('');
     })
 
-
     $('#update_profile').on('click', function () {
-        $('#updateInfo').find('.modal-body').find('.alert').remove();
-        var CP = $('#current_password').val();
-        if (CP === '') {
-            $('#updateInfo').find('.modal-body').prepend('<div class="alert alert-danger alert-dismissable" style="padding:5px; text-align: center">Please Enter your Password</div>');
-            return false;
-        } else {
-            $.get('/Account/CheckPassword/', { currentPassword: CP }, function (result) {
-                if (result == "True") {
-                    console.log(result)
-                    $('#profile-form').submit();
-                    $('#updateInfo').modal('hide');
-                } else {
-                    $('#updateInfo').find('.modal-body').prepend('<div class="alert alert-danger alert-dismissable" style="padding:5px; text-align: center">Incorrect Password</div>');
-                }
-            })
-        }
+        updateProfile('profile-form');
     })
+
+    $('#update_beis_medrash').on('click', function () {
+        updateProfile('beis-medrash-form');
+    })
+
+    $("#current_password").keypress(function (event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            $('#updateInfo').find('.btn-primary').trigger('click');
+        }
+    });
 })
+
+function updateProfile(formName) {
+    $('#updateInfo').find('.modal-body').find('.alert').remove();
+    var CP = $('#current_password').val();
+    if (CP === '') {
+        $('#updateInfo').find('.modal-body').prepend('<div class="alert alert-danger alert-dismissable" style="padding:5px; text-align: center">Please Enter your Password</div>');
+        return false;
+    } else {
+        $.get('/Account/CheckPassword/', { currentPassword: CP }, function (result) {
+            if (result == "True") {
+                console.log(formName)
+                $('#'+ formName + '').submit();
+                $('#updateInfo').modal('hide');
+            } else {
+                $('#updateInfo').find('.modal-body').prepend('<div class="alert alert-danger alert-dismissable" style="padding:5px; text-align: center">Incorrect Password</div>');
+            }
+        })
+    }
+}
 
 function updateInfo(type) {
     if (type == 'profile') {
         checkProfileInfo();
     } else {
+        checkBeisMedrashInfo();
+    }
+}
+
+function checkBeisMedrashInfo() {
+    $('#beis-medrash-form .error').hide()
+    form = true;
+    var BeisMedrashName = $('#Beis_Medrash_Name').val();
+
+    if (BeisMedrashName == '') {
+        $('#Beis_Medrash_Name').closest('.form-group').find(".error").html('Please enter a Beis Medrash Name.').show();
+        form = false;
+    }
+
+    if (form) {
+        $('#updateInfo').modal('show');
         $('#update_profile').hide();
         $('#update_beis_medrash').show();
         $('#updateInfo').find('.modal-title').text('Update Beis Medrash Info')
     }
 }
-
 
 
 function checkProfileInfo(){
@@ -149,10 +181,6 @@ function checkProfileInfo(){
     }
     return false;
 }
-
-
-
-
 
 
 function readURL(input) {

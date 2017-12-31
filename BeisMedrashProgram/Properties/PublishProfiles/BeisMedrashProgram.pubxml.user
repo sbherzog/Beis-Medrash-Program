@@ -13,10 +13,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 07:43:40</publishTime>
     </File>
     <File Include="bin/BeisMedrashProgram.data.dll">
-      <publishTime>12/26/2017 08:50:19</publishTime>
+      <publishTime>12/31/2017 13:22:28</publishTime>
     </File>
     <File Include="bin/BeisMedrashProgram.dll">
-      <publishTime>12/26/2017 08:50:24</publishTime>
+      <publishTime>12/31/2017 13:22:33</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>10/08/2017 22:48:52</publishTime>
@@ -94,7 +94,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 17:28:38</publishTime>
     </File>
     <File Include="Content/Account.css">
-      <publishTime>12/26/2017 08:47:42</publishTime>
+      <publishTime>12/31/2017 12:03:09</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>11/13/2017 19:52:08</publishTime>
@@ -102,11 +102,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap.min.css">
       <publishTime>11/13/2017 19:52:08</publishTime>
     </File>
+    <File Include="Content/colorbox.css">
+      <publishTime>12/26/2017 19:59:41</publishTime>
+    </File>
     <File Include="Content/Members.css">
       <publishTime>12/25/2017 22:54:46</publishTime>
     </File>
     <File Include="Content/profile.css">
-      <publishTime>12/09/2017 20:02:19</publishTime>
+      <publishTime>12/31/2017 13:18:14</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>12/26/2017 08:34:18</publishTime>
@@ -136,10 +139,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/09/2017 20:02:19</publishTime>
     </File>
     <File Include="Scripts/Account/profile.js">
-      <publishTime>12/09/2017 20:02:19</publishTime>
+      <publishTime>12/31/2017 13:20:31</publishTime>
     </File>
     <File Include="Scripts/Account/register.js">
-      <publishTime>12/10/2017 20:58:04</publishTime>
+      <publishTime>12/31/2017 12:19:05</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/13/2017 19:52:08</publishTime>
@@ -159,6 +162,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-1.10.2.min.map">
       <publishTime>11/13/2017 19:52:09</publishTime>
     </File>
+    <File Include="Scripts/jquery.colorbox.js">
+      <publishTime>12/26/2017 19:40:43</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>11/13/2017 19:52:17</publishTime>
     </File>
@@ -172,7 +178,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2017 19:52:17</publishTime>
     </File>
     <File Include="Scripts/Members.js">
-      <publishTime>12/25/2017 22:51:10</publishTime>
+      <publishTime>12/31/2017 12:00:40</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>11/13/2017 19:52:15</publishTime>
@@ -184,7 +190,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2017 19:52:16</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/10/2017 20:23:39</publishTime>
+      <publishTime>12/26/2017 19:40:36</publishTime>
     </File>
     <File Include="Views/Account/Expired.cshtml">
       <publishTime>12/26/2017 08:35:27</publishTime>
@@ -199,13 +205,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2017 22:48:32</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>12/26/2017 08:35:13</publishTime>
+      <publishTime>12/27/2017 20:39:05</publishTime>
     </File>
     <File Include="Views/Account/ProfilePage.cshtml">
-      <publishTime>12/26/2017 08:45:50</publishTime>
+      <publishTime>12/31/2017 13:10:31</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>12/26/2017 08:47:54</publishTime>
+      <publishTime>12/31/2017 13:07:45</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>12/26/2017 08:36:22</publishTime>
@@ -226,10 +232,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2017 19:52:04</publishTime>
     </File>
     <File Include="Views/Shared/_AccountLayout.cshtml">
-      <publishTime>12/26/2017 08:32:10</publishTime>
+      <publishTime>12/31/2017 12:17:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/10/2017 15:24:17</publishTime>
+      <publishTime>12/31/2017 12:11:06</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/13/2017 19:52:04</publishTime>

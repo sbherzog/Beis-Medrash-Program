@@ -94,3 +94,11 @@ input{
         padding: 0px;
     }
 }
+
+.image-upload-display{
+    top: -43px;
+    right: 40%;
+    position: relative;
+    max-width: 75px;
+    max-height: 40px;
+}
