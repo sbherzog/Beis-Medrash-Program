@@ -9,6 +9,8 @@
 
     $('.reset-beis-medrash').on('click', function () {
         $('#beis-medrash-form')[0].reset();
+        $('#beis-medrash-form .error').hide()
+        $('#beis-medrash-form').siblings('.alert-danger').remove();
         $('.beis-medrash-logo').attr('href', '/Images/BeisMedrashLogos/' + $('.beis-medrash-logo-input').attr('data-orig'));
         $('.beis-medrash-logo-image').attr('src', '/Images/BeisMedrashLogos/' + $('.beis-medrash-logo-input').attr('data-orig'));
     })
@@ -87,9 +89,9 @@ function updateProfile(formName) {
     } else {
         $.get('/Account/CheckPassword/', { currentPassword: CP }, function (result) {
             if (result == "True") {
-                console.log(formName)
                 $('#'+ formName + '').submit();
                 $('#updateInfo').modal('hide');
+                formName = '';
             } else {
                 $('#updateInfo').find('.modal-body').prepend('<div class="alert alert-danger alert-dismissable" style="padding:5px; text-align: center">Incorrect Password</div>');
             }
@@ -187,6 +189,9 @@ function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+            $('#beis-medrash-form').siblings('.alert-danger').remove();
+            $('#beis-medrash-form').before('<div class="alert alert-danger">Please update to save your changes</div>');
+
             $('.beis-medrash-logo-image').attr('src', e.target.result);
             $('.beis-medrash-logo').attr('href', e.target.result);
         };
