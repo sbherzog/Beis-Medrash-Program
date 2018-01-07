@@ -33,5 +33,27 @@ namespace BeisMedrashProgram.data.Properties {
                 return ((string)(this["BeisMedrashProgramConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=BeisMedrashProgram;Integrated Security=T" +
+            "rue")]
+        public string BeisMedrashProgramConnectionString1 {
+            get {
+                return ((string)(this["BeisMedrashProgramConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=104.168.145.92;Initial Catalog=BeisMedrashProgram;Persist Security In" +
+            "fo=True;User ID=BeisMedrash;Password=admin1!")]
+        public string BeisMedrashProgramConnectionString2 {
+            get {
+                return ((string)(this["BeisMedrashProgramConnectionString2"]));
+            }
+        }
     }
 }

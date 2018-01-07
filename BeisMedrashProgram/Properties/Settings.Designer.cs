@@ -26,8 +26,8 @@ namespace BeisMedrashProgram.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=BeisMedrashProgram;Integrated Security=T" +
-            "rue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=104.168.145.92;Initial Catalog=BeisMedrashProgram;User ID=BeisMedrash" +
+            ";Password=admin1!")]
         public string ConStr {
             get {
                 return ((string)(this["ConStr"]));

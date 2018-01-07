@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BeisMedrashProgram" Class="BeisMedrashDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=BeisMedrashProgram;Integrated Security=True" SettingsObjectName="BeisMedrashProgram.data.Properties.Settings" SettingsPropertyName="BeisMedrashProgramConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=104.168.145.92;Initial Catalog=BeisMedrashProgram;Persist Security Info=True;User ID=BeisMedrash" SettingsObjectName="BeisMedrashProgram.data.Properties.Settings" SettingsPropertyName="BeisMedrashProgramConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tbl_users" Member="tbl_users">
     <Type Name="tbl_user">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

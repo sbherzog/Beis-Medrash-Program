@@ -45,7 +45,7 @@ namespace BeisMedrashProgram.data
     #endregion
 		
 		public BeisMedrashDBDataContext() : 
-				base(global::BeisMedrashProgram.data.Properties.Settings.Default.BeisMedrashProgramConnectionString, mappingSource)
+				base(global::BeisMedrashProgram.data.Properties.Settings.Default.BeisMedrashProgramConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
