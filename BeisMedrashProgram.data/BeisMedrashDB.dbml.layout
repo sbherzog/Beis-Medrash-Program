@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="BeisMedrashDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.25" name="BeisMedrashDB">
   <DataContextMoniker Name="/BeisMedrashDBDataContext" />
   <nestedChildShapes>
     <classShape Id="41e8eef2-0b33-4bd8-8c58-b5c167b1d243" absoluteBounds="3.75, 0.5, 2, 2.1554996744791666">
@@ -27,24 +27,24 @@
         <elementListCompartment Id="c7220657-815f-4b8f-a9e1-f1d635bccf6f" absoluteBounds="1.1399999999999997, 3.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.125 : 4.52005126953125); (4.75 : 4.52005126953125); (4.75 : 2.65549967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.125 : 4.52005126953125); (4.75 : 4.52005126953125); (4.75 : 2.65549967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/BeisMedrashDBDataContext/tbl_beis_medrash/tbl_beis_medrash_tbl_user" />
       <nodes>
         <classShapeMoniker Id="f1aca5dc-9ef0-40bd-9093-eafb2ba7206a" />
         <classShapeMoniker Id="41e8eef2-0b33-4bd8-8c58-b5c167b1d243" />
       </nodes>
     </associationConnector>
-    <classShape Id="a6115b8f-ae67-48c7-b476-94e940c39d92" absoluteBounds="6.5, 3.25, 2, 5.8092268880208326">
+    <classShape Id="1502caaa-d2e7-461f-bb18-63503f820c60" absoluteBounds="7.375, 4.375, 2, 5.6169254557291657">
       <DataClassMoniker Name="/BeisMedrashDBDataContext/tbl_member" />
       <nestedChildShapes>
-        <elementListCompartment Id="33fd4cd1-7feb-4b92-82af-7ef0eae44e0a" absoluteBounds="6.515, 3.71, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a1a7210e-8275-4ce4-b2d6-b3f1bb0e8b94" absoluteBounds="7.39, 4.835, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.125 : 3.82252563476563); (4.66666666666667 : 3.82252563476563 : JumpStart); (4.83333333333333 : 3.82252563476563 : JumpEnd); (6.5 : 3.82252563476563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.125 : 5.21757690429687); (7.375 : 5.21757690429687)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/BeisMedrashDBDataContext/tbl_beis_medrash/tbl_beis_medrash_tbl_member" />
       <nodes>
         <classShapeMoniker Id="f1aca5dc-9ef0-40bd-9093-eafb2ba7206a" />
-        <classShapeMoniker Id="a6115b8f-ae67-48c7-b476-94e940c39d92" />
+        <classShapeMoniker Id="1502caaa-d2e7-461f-bb18-63503f820c60" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

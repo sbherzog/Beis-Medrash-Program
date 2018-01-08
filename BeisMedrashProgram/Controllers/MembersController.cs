@@ -91,7 +91,6 @@ namespace BeisMedrashProgram.Controllers
                 HeLastName = (m.HeLastName != null) ? m.HeLastName : "",
                 HeFirstName = (m.HeFirstName != null) ? m.HeFirstName : "",
                 HeSuffix = (m.HeSuffix != null) ? m.HeSuffix : "",
-                AddNum = (m.AddNum != null) ? m.AddNum : "",
                 AddStreet = (m.AddStreet != null) ? m.AddStreet : "",
                 Apt = (m.Apt != null) ? m.Apt : "",
                 City = (m.City != null) ? m.City : "",

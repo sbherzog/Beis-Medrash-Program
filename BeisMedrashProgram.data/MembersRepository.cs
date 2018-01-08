@@ -67,7 +67,6 @@ namespace BeisMedrashProgram.data
                 object HeFirstName = (m.HeFirstName != null) ? m.HeFirstName : (object)DBNull.Value;
                 object HeSuffix = (m.HeSuffix != null) ? m.HeSuffix : (object)DBNull.Value;
 
-                object AddNum = (m.AddNum != null) ? m.AddNum : (object)DBNull.Value;
                 object AddStreet = (m.AddStreet != null) ? m.AddStreet : (object)DBNull.Value;
                 object Apt = (m.Apt != null) ? m.Apt : (object)DBNull.Value;
                 object City = (m.City != null) ? m.City : (object)DBNull.Value;
@@ -84,7 +83,7 @@ namespace BeisMedrashProgram.data
                 object Type = (m.Type != null) ? m.Type : (object)DBNull.Value;
                 object SendStatement = (m.SendStatement != null) ? m.SendStatement : (object)DBNull.Value;
 
-                cmd.CommandText = "UPDATE tbl_members SET EnTitle=@EnTitle, LastName=@LastName, FirstName=@FirstName, HeTitle=@HeTitle, HeLastName=@HeLastName, HeFirstName=@HeFirstName, HeSuffix=@HeSuffix, AddNum=@AddNum, AddStreet=@AddStreet, Apt=@Apt, City=@City, State=@State, Zip=@Zip, CellPhone=@CellPhone, HomePhone=@HomePhone, Email=@Email, Notes=@Notes, Active=@Active, SendEmail=@SendEmail, Type=@Type, SendStatement=@SendStatement WHERE MemberId = @id";
+                cmd.CommandText = "UPDATE tbl_members SET EnTitle=@EnTitle, LastName=@LastName, FirstName=@FirstName, HeTitle=@HeTitle, HeLastName=@HeLastName, HeFirstName=@HeFirstName, HeSuffix=@HeSuffix, AddStreet=@AddStreet, Apt=@Apt, City=@City, State=@State, Zip=@Zip, CellPhone=@CellPhone, HomePhone=@HomePhone, Email=@Email, Notes=@Notes, Active=@Active, SendEmail=@SendEmail, Type=@Type, SendStatement=@SendStatement WHERE MemberId = @id";
                 cmd.Parameters.AddWithValue("@id", m.MemberId);
 
                 cmd.Parameters.AddWithValue("@EnTitle", EnTitle);
@@ -96,7 +95,6 @@ namespace BeisMedrashProgram.data
                 cmd.Parameters.AddWithValue("@HeFirstName", HeFirstName);
                 cmd.Parameters.AddWithValue("@HeSuffix", HeSuffix);
 
-                cmd.Parameters.AddWithValue("@AddNum", AddNum);
                 cmd.Parameters.AddWithValue("@AddStreet", AddStreet);
                 cmd.Parameters.AddWithValue("@Apt", Apt);
                 cmd.Parameters.AddWithValue("@City", City);

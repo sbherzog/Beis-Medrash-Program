@@ -87,7 +87,6 @@ function sentMemberInfo(ToDo) {
     var HeFirstName = $('#HeFirstName').val();
     var HeSuffix = $('#HeSuffix').val();
 
-    var AddNum = $('#AddNum').val();
     var AddStreet = $('#AddStreet').val();
     var Apt = $('#Apt').val();
     var City = $('#City').val();
@@ -130,7 +129,6 @@ function sentMemberInfo(ToDo) {
         HeLastName: HeLastName,
         HeFirstName: HeFirstName,
         HeSuffix: HeSuffix,
-        AddNum: AddNum,
         AddStreet: AddStreet,
         Apt: Apt,
         City: City,

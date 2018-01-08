@@ -583,7 +583,7 @@ namespace BeisMedrashProgram.data
 		
 		private EntitySet<tbl_user> _tbl_users;
 		
-		private EntityRef<tbl_member> _tbl_member;
+		private EntitySet<tbl_member> _tbl_members;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -612,7 +612,7 @@ namespace BeisMedrashProgram.data
 		public tbl_beis_medrash()
 		{
 			this._tbl_users = new EntitySet<tbl_user>(new Action<tbl_user>(this.attach_tbl_users), new Action<tbl_user>(this.detach_tbl_users));
-			this._tbl_member = default(EntityRef<tbl_member>);
+			this._tbl_members = new EntitySet<tbl_member>(new Action<tbl_member>(this.attach_tbl_members), new Action<tbl_member>(this.detach_tbl_members));
 			OnCreated();
 		}
 		
@@ -809,32 +809,16 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_member", ThisKey="Id", OtherKey="MemberId", IsUnique=true, IsForeignKey=false)]
-		public tbl_member tbl_member
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_members", ThisKey="Id", OtherKey="BeisMedrashId")]
+		public EntitySet<tbl_member> tbl_members
 		{
 			get
 			{
-				return this._tbl_member.Entity;
+				return this._tbl_members;
 			}
 			set
 			{
-				tbl_member previousValue = this._tbl_member.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_member.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_member.Entity = null;
-						previousValue.tbl_beis_medrash = null;
-					}
-					this._tbl_member.Entity = value;
-					if ((value != null))
-					{
-						value.tbl_beis_medrash = this;
-					}
-					this.SendPropertyChanged("tbl_member");
-				}
+				this._tbl_members.Assign(value);
 			}
 		}
 		
@@ -869,6 +853,18 @@ namespace BeisMedrashProgram.data
 			this.SendPropertyChanging();
 			entity.tbl_beis_medrash = null;
 		}
+		
+		private void attach_tbl_members(tbl_member entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_beis_medrash = this;
+		}
+		
+		private void detach_tbl_members(tbl_member entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_beis_medrash = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_members")]
@@ -892,8 +888,6 @@ namespace BeisMedrashProgram.data
 		private string _HeFirstName;
 		
 		private string _HeSuffix;
-		
-		private string _AddNum;
 		
 		private string _AddStreet;
 		
@@ -951,8 +945,6 @@ namespace BeisMedrashProgram.data
     partial void OnHeFirstNameChanged();
     partial void OnHeSuffixChanging(string value);
     partial void OnHeSuffixChanged();
-    partial void OnAddNumChanging(string value);
-    partial void OnAddNumChanged();
     partial void OnAddStreetChanging(string value);
     partial void OnAddStreetChanged();
     partial void OnAptChanging(string value);
@@ -1006,10 +998,6 @@ namespace BeisMedrashProgram.data
 			{
 				if ((this._MemberId != value))
 				{
-					if (this._tbl_beis_medrash.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMemberIdChanging(value);
 					this.SendPropertyChanging();
 					this._MemberId = value;
@@ -1155,26 +1143,6 @@ namespace BeisMedrashProgram.data
 					this._HeSuffix = value;
 					this.SendPropertyChanged("HeSuffix");
 					this.OnHeSuffixChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddNum", DbType="VarChar(150)")]
-		public string AddNum
-		{
-			get
-			{
-				return this._AddNum;
-			}
-			set
-			{
-				if ((this._AddNum != value))
-				{
-					this.OnAddNumChanging(value);
-					this.SendPropertyChanging();
-					this._AddNum = value;
-					this.SendPropertyChanged("AddNum");
-					this.OnAddNumChanged();
 				}
 			}
 		}
@@ -1419,7 +1387,7 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendStatement", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendStatement", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string SendStatement
 		{
 			get
@@ -1510,6 +1478,10 @@ namespace BeisMedrashProgram.data
 			{
 				if ((this._BeisMedrashId != value))
 				{
+					if (this._tbl_beis_medrash.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnBeisMedrashIdChanging(value);
 					this.SendPropertyChanging();
 					this._BeisMedrashId = value;
@@ -1519,7 +1491,7 @@ namespace BeisMedrashProgram.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_beis_medrash", ThisKey="MemberId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_beis_medrash_tbl_member", Storage="_tbl_beis_medrash", ThisKey="BeisMedrashId", OtherKey="Id", IsForeignKey=true)]
 		public tbl_beis_medrash tbl_beis_medrash
 		{
 			get
@@ -1536,17 +1508,17 @@ namespace BeisMedrashProgram.data
 					if ((previousValue != null))
 					{
 						this._tbl_beis_medrash.Entity = null;
-						previousValue.tbl_member = null;
+						previousValue.tbl_members.Remove(this);
 					}
 					this._tbl_beis_medrash.Entity = value;
 					if ((value != null))
 					{
-						value.tbl_member = this;
-						this._MemberId = value.Id;
+						value.tbl_members.Add(this);
+						this._BeisMedrashId = value.Id;
 					}
 					else
 					{
-						this._MemberId = default(int);
+						this._BeisMedrashId = default(int);
 					}
 					this.SendPropertyChanged("tbl_beis_medrash");
 				}
